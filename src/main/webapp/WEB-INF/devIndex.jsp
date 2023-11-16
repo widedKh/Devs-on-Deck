@@ -44,7 +44,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-2">
-									<label class="form-label">Email:</label>
+									<label class="form-label">Email</label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="email" path="email" type="email" 	class="form-control" />
@@ -93,7 +93,7 @@
 
 							<div class="row mb-3">
 								<div class="col-md-2">
-									<label class="form-label">Confirm:</label>
+									<label class="form-label">Confirm: </label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="confirm" path="confirm" type="password" class="form-control" />
