@@ -25,8 +25,7 @@
 							<h2>Welcome Back, Developer!</h2>
 							<p>Let's connect you to a job</p>
 						</div>
-						<form:form action="/devs/login" method="post"
-							modelAttribute="newLogin" class="mt-5">
+						<form:form action="/devs/login" method="post" modelAttribute="newLogin" class="mt-5">
 
 
 							<div class="row mb-3">
@@ -34,8 +33,7 @@
 									<label class="form-label">Email</label>
 								</div>
 								<div class="col-md-9">
-									<form:input name="email" path="email" type="email"
-										class="form-control" />
+									<form:input name="email" path="email" type="email" class="form-control" />
 									<form:errors path="email" class="text-danger" />
 								</div>
 							</div>
@@ -45,8 +43,7 @@
 									<label class="form-label">Password</label>
 								</div>
 								<div class="col-md-9">
-									<form:input name="password" path="password" type="password"
-										class="form-control" />
+									<form:input name="password" path="password" type="password" class="form-control" />
 									<form:errors path="password" class="text-danger" />
 								</div>
 								<div class="offset-md-9 mt-2">

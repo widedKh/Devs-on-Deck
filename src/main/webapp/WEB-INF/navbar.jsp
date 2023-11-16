@@ -17,7 +17,7 @@
                     <a class="nav-link" href="/devLogin.jsp">Dev login</a>
                     <a class="nav-link" href="/orgLogin.jsp">Org login</a>
                 </li>
-            <% } else if (currentPage.equals("/devs/login") || currentPage.equals("/orgs/login")) { %>
+            <% } else if (currentPage.endsWith("/devs/login") || currentPage.endsWith("/orgs/login")) { %>
                 <li class="nav-item active">
                     <a class="nav-link" href="/devIndex.jsp">Dev Registration</a>
                     <a class="nav-link" href="/orgIndex.jsp">Org Registration</a>

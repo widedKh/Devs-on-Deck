@@ -22,16 +22,14 @@
 					style="width: 125%; background-color: #e9ecef; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 					<div class="card-body ml-3">
 						<h2 class="card-title text-primary text-center mt-3 mb-5">Organization Sign Up</h2>
-						<form:form action="/devs/register" method="post"
-							modelAttribute="newOrg" class="form-group">
+						<form:form action="/devs/register" method="post" modelAttribute="newOrg" class="form-group">
 
 							<div class="row mb-3 ">
 								<div class="col-md-3">
 									<label class="form-label">Org name:</label>
 								</div>
 								<div class="col-md-9">
-									<form:input name="password" path="password" type="password"
-										class="form-control" />
+									<form:input name="password" path="password" type="password" class="form-control" />
 									<form:errors path="password" class="text-danger" />
 								</div>
 							</div>
@@ -40,8 +38,7 @@
 									<label class="form-label">First name:</label>
 								</div>
 								<div class="col-md-3">
-									<form:input name="firstName" path="firstName"
-										class="form-control" />
+									<form:input name="firstName" path="firstName" class="form-control" />
 									<form:errors path="firstName" class="text-danger" />
 								</div>
 
@@ -49,8 +46,7 @@
 									<label class="form-label ">Last name:</label>
 								</div>
 								<div class="col-md-3">
-									<form:input name="lastName" path="lastName"
-										class="form-control" />
+									<form:input name="lastName" path="lastName" class="form-control" />
 									<form:errors path="lastName" class="text-danger" />
 								</div>
 							</div>
@@ -60,8 +56,7 @@
 									<label class="form-label">Contact Email</label>
 								</div>
 								<div class="col-md-9">
-									<form:input name="email" path="email" type="email"
-										class="form-control" />
+									<form:input name="email" path="email" type="email" class="form-control" />
 									<form:errors path="email" class="text-danger" />
 								</div>
 							</div>
