@@ -14,19 +14,29 @@
 <title>Welcome to DevsOnDeck</title>
 </head>
 <body style="background-color: #f8f9fa;">
-    <jsp:include page="navbar.jsp" />
+	<jsp:include page="navbar.jsp" />
 	<div class="container mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<div class="card mx-auto"
 					style="width: 125%; background-color: #e9ecef; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 					<div class="card-body ml-3">
-						<h2 class="card-title text-primary text-center mt-3 mb-5">Developer Sign Up</h2>
+						<h2 class="card-title text-primary text-center mt-3 mb-5">Organization Sign Up</h2>
 						<form:form action="/devs/register" method="post"
-							modelAttribute="newDev" class="form-group">
+							modelAttribute="newOrg" class="form-group">
 
+							<div class="row mb-3 ">
+								<div class="col-md-3">
+									<label class="form-label">Org name:</label>
+								</div>
+								<div class="col-md-9">
+									<form:input name="password" path="password" type="password"
+										class="form-control" />
+									<form:errors path="password" class="text-danger" />
+								</div>
+							</div>
 							<div class="form-row mb-3">
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label class="form-label">First name:</label>
 								</div>
 								<div class="col-md-3">
@@ -45,11 +55,9 @@
 								</div>
 							</div>
 
-
-
 							<div class="row mb-3">
-								<div class="col-md-2">
-									<label class="form-label">Email</label>
+								<div class="col-md-3">
+									<label class="form-label">Contact Email</label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="email" path="email" type="email"
@@ -60,8 +68,8 @@
 
 
 							<div class="row mb-3">
-								<div class="col-md-2">
-									<label for="address">Address:</label>
+								<div class="col-md-3">
+									<label for="address">Org Address:</label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="address" path="address" class="form-control" />
@@ -70,7 +78,7 @@
 							</div>
 
 							<div class="form-row mb-3">
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label class="form-label">City:</label>
 								</div>
 								<div class="col-md-3">
@@ -88,8 +96,8 @@
 							</div>
 
 							<div class="row mb-3 ">
-								<div class="col-md-2">
-									<label class="form-label">Password</label>
+								<div class="col-md-3">
+									<label class="form-label">Password:</label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="password" path="password" type="password"
@@ -99,8 +107,8 @@
 							</div>
 
 							<div class="row mb-3">
-								<div class="col-md-2">
-									<label class="form-label">Confirm </label>
+								<div class="col-md-3">
+									<label class="form-label">Confirm: </label>
 								</div>
 								<div class="col-md-9">
 									<form:input name="confirm" path="confirm" type="password"
@@ -109,13 +117,13 @@
 								</div>
 							</div>
 
-							<div class="offset-md-9">
-								
-								<button type="submit" class="btn btn-success btn-lg shadow">Register</button>
-							
+							<div class="offset-md-10">
+
+								<button type="submit" class="btn btn-success btn-lg shadow">Register:</button>
+
 							</div>
-							<div  class="offset-md-5 mt-2">
-								<a href="/orgs/register">Need to sign up an Organization?</a>
+							<div class="offset-md-5 mt-2">
+								<a href="/orgs/register">Need to sign up as a Developer?</a>
 							</div>
 
 						</form:form>
