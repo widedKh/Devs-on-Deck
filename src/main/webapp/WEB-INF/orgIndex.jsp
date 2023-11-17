@@ -22,7 +22,7 @@
 					style="width: 125%; background-color: #e9ecef; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
 					<div class="card-body ml-3">
 						<h2 class="card-title text-primary text-center mt-3 mb-5">Organization Sign Up</h2>
-						<form:form action="/devs/register" method="post" modelAttribute="newOrg" class="form-group">
+						<form:form action="/orgs/register" method="post" modelAttribute="newOrg" class="form-group">
 
 							<div class="row mb-3 ">
 								<div class="col-md-3">
@@ -114,7 +114,7 @@
 
 							<div class="offset-md-10">
 
-								<button type="submit" class="btn btn-success btn-lg shadow">Register:</button>
+								<button type="submit" class="btn btn-success btn-lg shadow">Register</button>
 
 							</div>
 							<div class="offset-md-5 mt-2">
