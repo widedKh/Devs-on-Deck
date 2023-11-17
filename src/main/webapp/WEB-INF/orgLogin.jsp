@@ -27,7 +27,7 @@
 							<p>Let's find you some Candidates!</p>
 						</div>
 						
-						<form:form action="/devs/login" method="post" modelAttribute="newLogin" class="mt-5">
+						<form:form action="/orgs/login" method="post" modelAttribute="newLogin" class="mt-5">
 
 
 							<div class="row mb-3">
