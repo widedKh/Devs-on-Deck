@@ -29,8 +29,8 @@
 									<label class="form-label">Org name:</label>
 								</div>
 								<div class="col-md-9">
-									<form:input name="password" path="password" type="password" class="form-control" />
-									<form:errors path="password" class="text-danger" />
+									<form:input name="orgName" path="orgName" type="text" class="form-control" />
+									<form:errors path="orgName" class="text-danger" />
 								</div>
 							</div>
 							<div class="form-row mb-3">
