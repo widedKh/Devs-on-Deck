@@ -32,7 +32,7 @@ public class PositionController {
     // ------ READ ALL
     @GetMapping("/orgs/dashboard")
     public String positionsList(@ModelAttribute("position") Position position, Model model, HttpSession session) {
-	Long userId = (Long) session.getAttribute("organization_id");
+	Long userId = (Long) session.getAttribute("org_id");
 	if (userId == null) {
 	    return "redirect:/orgs/login";
 	} else {
@@ -55,7 +55,7 @@ public class PositionController {
     @PostMapping("/orgs/job/new")
     public String createPosition(@Valid @ModelAttribute("position") Position position, BindingResult result,
 	    HttpSession session) {
-	Long userId = (Long) session.getAttribute("organization_id");
+	Long userId = (Long) session.getAttribute("org_id");
 
 	if (userId == null) {
 	    return "redirect:/orgs/login";
@@ -76,7 +76,7 @@ public class PositionController {
     // display one position
     @GetMapping("/orgs/job/{id}")
     public String showPosition(@PathVariable("id") Long id, Model model, HttpSession session) {
-	Long userId = (Long) session.getAttribute("organization_id");
+	Long userId = (Long) session.getAttribute("org_id");
 	if (userId == null) {
 	    return "redirect:/";
 	} else {
@@ -92,7 +92,7 @@ public class PositionController {
     // get the edit form
     @GetMapping("/orgs/{id}/edit")
     public String editPosition(Model model, @PathVariable("id") Long id, HttpSession session) {
-	Long userId = (Long) session.getAttribute("organization_id");
+	Long userId = (Long) session.getAttribute("org_id");
 	if (userId == null) {
 	    return "redirect:/orgs/login";
 	}
@@ -125,7 +125,7 @@ public class PositionController {
     // delete a position
     @GetMapping("/orgs/delete/{id}")
     public String removePosition(@PathVariable("id") Long id, HttpSession session) {
-	Long userId = (Long) session.getAttribute("organization_id");
+	Long userId = (Long) session.getAttribute("org_id");
 	if (userId == null) {
 	    return "redirect:/orgs/login";
 	} else {

@@ -14,9 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,7 +37,7 @@ public class Position {
 
 	@NotNull
 	@NotEmpty(message = "the skills is required ")
-	@Max(value = 5, message = "You can add up to 5 skills")
+	@Size(max = 5, message = "You can add up to 5 skills")
 	private String skill;
 
 	@Column(updatable = false)
