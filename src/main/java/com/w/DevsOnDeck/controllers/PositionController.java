@@ -40,7 +40,7 @@ public class PositionController {
 	    List<Position> positions = positionService.allPositions();
 	    model.addAttribute("org", orgs);
 	    model.addAttribute("positions", positions);
-	    return "dashboard.jsp";
+	    return "orgDashboard.jsp";
 	}
     }
 
@@ -73,7 +73,7 @@ public class PositionController {
 	}
     }
 
-    // display one team
+    // display one position
     @GetMapping("/orgs/job/{id}")
     public String showPosition(@PathVariable("id") Long id, Model model, HttpSession session) {
 	Long userId = (Long) session.getAttribute("organization_id");
