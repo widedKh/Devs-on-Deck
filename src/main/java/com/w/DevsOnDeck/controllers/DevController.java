@@ -27,7 +27,7 @@ public class DevController {
    @GetMapping("/devs/register")
    public String DevIndex(Model model) {
 
-       model.addAttribute("newUser", new Developer());
+       model.addAttribute("newDev", new Developer());
        return "devIndex.jsp";
    }
    //register a user

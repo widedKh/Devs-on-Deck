@@ -59,6 +59,8 @@ public class PositionController {
 
 	if (userId == null) {
 	    return "redirect:/orgs/login";
+	    
+	    
 	}
 
 	if (result.hasErrors()) {
