@@ -34,7 +34,7 @@ public class PositionController {
     public String positionsList(@ModelAttribute("position") Position position, Model model, HttpSession session) {
 	Long userId = (Long) session.getAttribute("organization_id");
 	if (userId == null) {
-	    return "redirect:/";
+	    return "redirect:/orgs/login";
 	} else {
 	    Organization orgs = orgService.findOrg(userId);
 	    List<Position> positions = positionService.allPositions();
