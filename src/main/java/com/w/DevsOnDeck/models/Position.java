@@ -24,106 +24,102 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "positions")
 public class Position {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@NotNull
-	@NotEmpty(message = "the position name is required ")
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @NotNull
+    @NotEmpty(message = "the position name is required ")
+    private String name;
 
-	@NotNull
-	@NotEmpty(message = "the position desciption is required ")
-	private String description;
+    @NotNull
+    @NotEmpty(message = "the position desciption is required ")
+    private String description;
 
-	@NotNull
-	@NotEmpty(message = "the skills is required ")
-	@Size(max = 5, message = "You can add up to 5 skills")
-	private String skill;
+    @Column(name = "skill_list")
+    @Size(max = 255, message = "You can add up to 255 characters for skills")
+    private String skillList;
 
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "organization_id")
-	private Organization organization;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organization_id")
+    private Organization organization;
 
-	@ManyToMany
-	@JoinTable(name = "position_skill", 
-	           joinColumns = @JoinColumn(name = "position_id"), 
-	           inverseJoinColumns = @JoinColumn(name = "skill_id")
-	)
-	private List<Skill> skills;
+    @ManyToMany
+    @JoinTable(name = "position_skill", joinColumns = @JoinColumn(name = "position_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
+    private List<Skill> skills;
 
 //Constructor
-	private Position() {
-	}
+    private Position() {
+    }
 
 //getters and setters
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+	return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+	return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+	this.description = description;
+    }
 
-	public String getSkill() {
-		return skill;
-	}
+    public String getSkillList() {
+	return skillList;
+    }
 
-	public void setSkill(String skill) {
-		this.skill = skill;
-	}
+    public void setSkillList(String skillList) {
+	this.skillList = skillList;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public Date getCreatedAt() {
+	return createdAt;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(Date createdAt) {
+	this.createdAt = createdAt;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public Date getUpdatedAt() {
+	return updatedAt;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public void setUpdatedAt(Date updatedAt) {
+	this.updatedAt = updatedAt;
+    }
 
-	public Organization getOrganization() {
-		return organization;
-	}
+    public Organization getOrganization() {
+	return organization;
+    }
 
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
-	}
+    public void setOrganization(Organization organization) {
+	this.organization = organization;
+    }
 
-	public List<Skill> getSkills() {
-		return skills;
-	}
+    public List<Skill> getSkills() {
+	return skills;
+    }
 
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
-	}
+    public void setSkills(List<Skill> skills) {
+	this.skills = skills;
+    }
 
 }

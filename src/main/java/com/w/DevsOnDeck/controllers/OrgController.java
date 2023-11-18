@@ -76,10 +76,10 @@ public class OrgController {
    }
    
    //log out
-   @GetMapping("/OrgLogout")
+   @GetMapping("/orgLogout")
    public String logout(HttpSession session) {
 	   session.invalidate();
-  	 return "redirect:/";
+  	 return "redirect:/orgs/login";
    }
 
    

@@ -1,5 +1,6 @@
 package com.w.DevsOnDeck.controllers;
 
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,12 +16,16 @@ import com.w.DevsOnDeck.models.Developer;
 import com.w.DevsOnDeck.models.LoginDev;
 import com.w.DevsOnDeck.services.DevService;
 
+
 @Controller
 public class DevController {
 
 	// Add once service is implemented:
     @Autowired
     private DevService devService;
+    
+    
+    
     
     
    //display register page 
@@ -77,7 +82,7 @@ public class DevController {
    @GetMapping("/devLogout")
    public String logout(HttpSession session) {
 	   session.invalidate();
-  	 return "redirect:/";
+  	 return "redirect:/devs/login";
    }
 
    

@@ -61,7 +61,7 @@ public class DevService {
 	}
 
 	// READ ALL
-	public List<Developer> allDeveloper() {
+	public List<Developer> allDevelopers() {
 		return devRepository.findAll();
 	}
 

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import com.w.DevsOnDeck.models.Developer;
 import com.w.DevsOnDeck.models.Organization;
 import com.w.DevsOnDeck.models.Position;
+import com.w.DevsOnDeck.services.DevService;
 import com.w.DevsOnDeck.services.OrgService;
 import com.w.DevsOnDeck.services.PositionService;
 
@@ -28,21 +30,28 @@ public class PositionController {
 
     @Autowired
     OrgService orgService;
+    
+    @Autowired
+    DevService devService;
 
-    // ------ READ ALL
     @GetMapping("/orgs/dashboard")
-    public String positionsList(@ModelAttribute("position") Position position, Model model, HttpSession session) {
-	Long userId = (Long) session.getAttribute("org_id");
-	if (userId == null) {
-	    return "redirect:/orgs/login";
-	} else {
-	    Organization orgs = orgService.findOrg(userId);
-	    List<Position> positions = positionService.allPositions();
-	    model.addAttribute("org", orgs);
-	    model.addAttribute("positions", positions);
-	    return "orgDashboard.jsp";
-	}
+    public String orgDashboard(@ModelAttribute("position") Position position, Model model, HttpSession session) {
+        Long userId = (Long) session.getAttribute("org_id");
+        if (userId == null) {
+            return "redirect:/orgs/login";
+        } else {
+            Organization orgs = orgService.findOrg(userId);
+            List<Position> positions = positionService.allPositions();
+            List<Developer> devs = devService.allDevelopers(); 
+            
+            model.addAttribute("org", orgs);
+            model.addAttribute("positions", positions);
+            model.addAttribute("devs", devs); 
+
+            return "orgDashboard.jsp";
+        }
     }
+
 
     // display form
     @GetMapping("/orgs/job/new")
