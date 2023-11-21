@@ -74,5 +74,10 @@ public class DevService {
 			return null;
 		}
 	}
+	
+	public Developer updateDev(Developer dev) {
+
+		return devRepository.save(dev);
+	}
 
 }

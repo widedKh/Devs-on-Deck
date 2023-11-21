@@ -66,21 +66,15 @@ public class OrgController {
    
        if(result.hasErrors()) {
            model.addAttribute("newOrg", new Organization());
-           return "OrgLogin.jsp";
+           return "orgLogin.jsp";
        }
 
        else {
-       	session.setAttribute("org_id", org.getId());
+       	session.setAttribute("organization_id", org.getId());
        }
        return "redirect:/orgs/dashboard";
    }
    
-   //log out
-   @GetMapping("/orgLogout")
-   public String logout(HttpSession session) {
-	   session.invalidate();
-  	 return "redirect:/orgs/login";
-   }
-
+   
    
 }

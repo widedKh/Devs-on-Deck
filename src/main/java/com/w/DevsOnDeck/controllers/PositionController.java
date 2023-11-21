@@ -1,5 +1,6 @@
 package com.w.DevsOnDeck.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -34,24 +35,32 @@ public class PositionController {
     @Autowired
     DevService devService;
 
+ // ------ READ ALL
     @GetMapping("/orgs/dashboard")
-    public String orgDashboard(@ModelAttribute("position") Position position, Model model, HttpSession session) {
-        Long userId = (Long) session.getAttribute("org_id");
+    public String positionsList(@ModelAttribute("position") Position position, Model model, HttpSession session) {
+        Long userId = (Long) session.getAttribute("organization_id");
         if (userId == null) {
-            return "redirect:/orgs/login";
+            return "redirect:/";
         } else {
             Organization orgs = orgService.findOrg(userId);
             List<Position> positions = positionService.allPositions();
-            List<Developer> devs = devService.allDevelopers(); 
-            
+            List<Developer> developers = devService.allDevelopers(); 
+
+            List<List<String>> allLanguages = new ArrayList<>();
+            List<List<String>> allFrameworks = new ArrayList<>();
+            for (Developer developer : developers) {
+                allLanguages.add(developer.getLanguages());
+                allFrameworks.add(developer.getFrameworks());
+            }
+
+            model.addAttribute("allLanguages", allLanguages);
+            model.addAttribute("allFrameworks", allFrameworks);
+            model.addAttribute("developers", developers);
             model.addAttribute("org", orgs);
             model.addAttribute("positions", positions);
-            model.addAttribute("devs", devs); 
-
-            return "orgDashboard.jsp";
+            return "dashboard.jsp";
         }
     }
-
 
     // display form
     @GetMapping("/orgs/job/new")
@@ -62,14 +71,12 @@ public class PositionController {
     // add a new position
 
     @PostMapping("/orgs/job/new")
-    public String createPosition(@Valid @ModelAttribute("position") Position position, BindingResult result,
+    public String createTeam(@Valid @ModelAttribute("position") Position position, BindingResult result,
 	    HttpSession session) {
-	Long userId = (Long) session.getAttribute("org_id");
+	Long userId = (Long) session.getAttribute("organization_id");
 
 	if (userId == null) {
 	    return "redirect:/orgs/login";
-	    
-	    
 	}
 
 	if (result.hasErrors()) {
@@ -82,10 +89,10 @@ public class PositionController {
 	}
     }
 
-    // display one position
+    // display one team
     @GetMapping("/orgs/job/{id}")
     public String showPosition(@PathVariable("id") Long id, Model model, HttpSession session) {
-	Long userId = (Long) session.getAttribute("org_id");
+	Long userId = (Long) session.getAttribute("organization_id");
 	if (userId == null) {
 	    return "redirect:/";
 	} else {
@@ -101,7 +108,7 @@ public class PositionController {
     // get the edit form
     @GetMapping("/orgs/{id}/edit")
     public String editPosition(Model model, @PathVariable("id") Long id, HttpSession session) {
-	Long userId = (Long) session.getAttribute("org_id");
+	Long userId = (Long) session.getAttribute("organization_id");
 	if (userId == null) {
 	    return "redirect:/orgs/login";
 	}
@@ -134,7 +141,7 @@ public class PositionController {
     // delete a position
     @GetMapping("/orgs/delete/{id}")
     public String removePosition(@PathVariable("id") Long id, HttpSession session) {
-	Long userId = (Long) session.getAttribute("org_id");
+	Long userId = (Long) session.getAttribute("organization_id");
 	if (userId == null) {
 	    return "redirect:/orgs/login";
 	} else {

@@ -5,13 +5,10 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
+import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -19,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name = "devs")
@@ -48,6 +47,14 @@ public class Developer {
 
 	@NotEmpty(message = "State is required!")
 	private String state;
+	
+	private String bio;
+	
+	@ElementCollection
+	private List<String> languages;
+	
+	@ElementCollection
+	private List<String> frameworks;
 
 	@NotEmpty(message = "Password is required!")
 	@Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
@@ -65,12 +72,10 @@ public class Developer {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "developer_skill", joinColumns = @JoinColumn(name = "developer_id"), inverseJoinColumns = @JoinColumn(name = "skillf_id"))
-	private List<Skill> skills;
+	
 
 	public Developer() {
-
+		
 	}
 
 	// getters and setters
@@ -162,12 +167,30 @@ public class Developer {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<Skill> getSkills() {
-		return skills;
+	
+	
+	public List<String> getLanguages() {
+		return languages;
 	}
 
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
+
+	public List<String> getFrameworks() {
+		return frameworks;
+	}
+
+	public void setFrameworks(List<String> frameworks) {
+		this.frameworks = frameworks;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 
 }
