@@ -11,59 +11,10 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 <title>Welcome to DevsOnDeck</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-<style>
-#iconContainer {
-	border: 1px solid #ccc;
-	padding: 10px;
-	margin-bottom: 10px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-}
-
-#iconSelectedContainer {
-	border: 1px solid #ccc;
-	height: 10%;
-	padding: 10px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-}
-
-#iconSelectedContainer .iconItem {
-	flex: 0 0 calc(20% - 10px);
-	/* 20% to allow for gaps, adjust as needed */
-	max-width: calc(20% - 10px);
-	/* 20% to allow for gaps, adjust as needed */
-	text-align: center;
-	cursor: pointer;
-	text-align: center
-}
-
-.iconItem {
-	flex: 0 0 calc(25% - 10px);
-	max-width: calc(25% - 10px);
-	text-align: center;
-	cursor: pointer;
-}
-
-.iconItem:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-.selected {
-	border: 2px solid #007bff;
-	/* Highlight selected icon with blue border */
-}
-
-.custom-btn-size {
-	height: 10%; /* Set your desired height */
-}
-</style>
 
 </head>
 <body style="background-color: #f8f9fa;">
@@ -73,13 +24,13 @@
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="d-flex" style="background-color: #6FA8DC; width: 125%;">
-					<div class="col-md-6 p-2">
+					<div class="col-md-6 p-3">
 						<h1 class="ml-1">Add Your Skills</h1>
 					</div>
 					<div class="col-md-5 mt-4 p-2">
 						<div class="progress" style="height: 1, 6rem; width: 100%;">
 							<div class="progress-bar bg-success" role="progressbar"
-								style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+								 aria-valuenow="25" aria-valuemin="0"
 								aria-valuemax="100"></div>
 						</div>
 					</div>
@@ -97,8 +48,8 @@
 							<div class="row mb-3">
 
 								<div class="col-md-6">
-									<h2 class="mt-3 mb-5">Pick Your Top 5 Frameworks or
-										Libraries</h2>
+									<h3 class="mt-4 mb-5">Pick Your Top 5 Frameworks or
+										Libraries</h3>
 									<div id="iconContainer" style="background-color: #e9ecef;">
 										<!-- Icons will be dynamically added here -->
 									</div>
@@ -107,7 +58,7 @@
 								<div class="col-md-5">
 									<div class="mt-3 mb-2" id="iconSelectedContainer"></div>
 
-									<div>Completing your developer profile is crucial for
+									<div class="mt-5">Completing your developer profile is crucial for
 										several reasons: Professional Image: A well-detailed profile
 										reflects professionalism and showcases your commitment to your
 										work. It's the first impression others will have of you.
@@ -126,12 +77,22 @@
 										offers.</div>
 								</div>
 							</div>
-							<div class="d-flex mt-3 justify-content-end">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
 								
 								<button type="submit"
-									class="btn btn-primary custom-btn-size shadow">COMPLETE PROFILE</button>
-
-							</div>
+									class="btn btn-primary custom-btn-size shadow w-50 rounded-pill py-3">
+									 <span class="fw-bold">COMPLETE PROFILE</span>
+								</button>
+						    	</div>
+                                 <!-- Custom Alert -->
+                                    <div id="customAlert" class="alert alert-danger" style="display: none;">
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                           <span aria-hidden="true">&times;</span>
+                                         </button>
+                                     <strong>Error!</strong>
+                                    </div>
+                                
+						
 						</form>
 					</div>
 				</div>
@@ -156,9 +117,14 @@
         {class: 'devicon-express-original', name: 'Express' },
         {class: 'devicon-tailwindcss-plain', name: 'TailwindCSS' },
         {class: 'devicon-d3js-plain', name: 'D3js' },
-        {class: 'devicon-threejs-plain', name: 'Threejs' },
+        {class: 'devicon-threejs-original', name: 'Threejs' },
+        {class: 'devicon-materialui-plain', name: 'Materialui' },
+        {class: 'devicon-jquery-plain', name: 'jQuery' },
+        {class: 'devicon-socketio-original', name: 'Socket.io' },
+        
+        
     ];
-
+    
      // Display icons in rows of four
         const iconContainer = document.getElementById('iconContainer');
         const iconSelectedContainer = document.getElementById('iconSelectedContainer');
@@ -171,6 +137,33 @@
         const maxSelectedIcons = 5;
         const availableIcons = [...iconList];
         
+        
+      //fucntion to display an alert
+        function showAlert(message) {
+            const alertElement = document.getElementById('customAlert');
+            const alertMessage = alertElement.querySelector('strong');
+            alertMessage.innerText = message;
+            alertElement.style.display = 'block';
+            
+            setTimeout(function() {
+                alertElement.style.display = 'none';
+            }, 8000);
+
+        }
+      
+     // Define the completion status (in percentage)
+        const completionStatus = 100; // Set this value dynamically based on your logic
+
+        // Select the progress bar element
+        const progressBar = document.querySelector('.progress-bar');
+
+        // Set the width of the progress bar
+        progressBar.style.width = completionStatus + '%';
+
+        // Update the aria-valuenow attribute
+        progressBar.setAttribute('aria-valuenow', completionStatus);
+
+      
      	// Function to create an icon element
         function createIconElement(icon) {
             const iconItem = document.createElement('div');
@@ -222,7 +215,7 @@
                 iconItem.addEventListener('click', () => {
                 	
                 	if (selectedIcons.length >= maxSelectedIcons) {
-                        alert('You can select up to five icons.');
+                        showAlert('You can select up to five icons.');
                         return;
                     }
                 	
@@ -336,13 +329,13 @@
 
             // Check if the user has selected at least one icon
             if (selectedIcons.length === 0) {
-                alert('Please select at least one icon.');
+            	showAlert('Please select at least one icon.');
                 return;
             }
 
             // Check if the user has selected up to the maximum allowed icons
             if (selectedIcons.length > maxSelectedIcons) {
-                alert('You can select up to five icons.');
+            	showAlert('You can select up to five icons.');
                 return;
             }
 
@@ -361,8 +354,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
