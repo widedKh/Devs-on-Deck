@@ -44,7 +44,7 @@ public class OrgController {
        }
        
        else {
-       	session.setAttribute("org_id", newOrg.getId());
+       	session.setAttribute("organization_id", newOrg.getId());
        }
    
        return "redirect:/orgs/dashboard";
