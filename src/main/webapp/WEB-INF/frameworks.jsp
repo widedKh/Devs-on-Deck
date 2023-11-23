@@ -47,7 +47,7 @@
 							
 							<div class="row mb-3">
 
-								<div class="col-md-6">
+								<div class="col-md-5">
 									<h3 class="mt-4 mb-5">Pick Your Top 5 Frameworks or
 										Libraries</h3>
 									<div id="iconContainer" style="background-color: #e9ecef;">
@@ -55,7 +55,7 @@
 									</div>
 								</div>
 
-								<div class="col-md-5">
+								<div class="col-md-6">
 									<div class="mt-3 mb-2" id="iconSelectedContainer"></div>
 
 									<div class="mt-5">Completing your developer profile is crucial for
@@ -77,10 +77,10 @@
 										offers.</div>
 								</div>
 							</div>
-							<div class="d-grid gap-2 d-md-flex justify-content-md-end m-5">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end m-5 ">
 								
 								<button type="submit"
-									class="btn btn-primary custom-btn-size shadow w-50 rounded-pill py-3">
+									class="btn btn-primary custom-btn-size shadow w-50 rounded-pill py-3 " >
 									 <span class="fw-bold">COMPLETE PROFILE</span>
 								</button>
 						    	</div>

@@ -28,10 +28,11 @@
            			<a class="nav-link text-white" href="/orgs/register">Org Registration</a>
        			</li>
    			<% } else { %>
-   				<li class="nav-item active">
-           			<a class="nav-link text-white" href="/logout">Logout</a>
-       			</li>    
-   			 <% }  %>
+    <li class="nav-item active">
+        <a class="nav-link text-white" href="/logout" style="font-weight: bold;">Logout</a>
+    </li>
+<% } %>
+
                 
         </ul>
     </div>

@@ -1,42 +1,33 @@
-#iconContainer {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.icon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.5rem;
+        cursor: pointer;
+    }
 
-         #iconSelectedContainer {
-            border: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 10px;
-            overflow-x: auto;
-        }
-        .iconItem {
-            flex: 0 0 calc(25% - 10px);
-            max-width: calc(25% - 5px);
-            text-align: center;
-            cursor: pointer;
-        }
-         
-         
+    .icon-container i {
+        font-size: 2rem;
+    }
 
-        .iconItem:hover {
-            background-color: #007bff;
-            color: white;
-        }
+    .icon-container.selected {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+    }
 
-        .selected {
-               border: 2px solid #007bff;
-        }
+    #iconContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-start;
+        background-color: #e9ecef;
+        padding: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
 
-        .custom-btn-size {
-            height: 10%; /* Set your desired height */
-        }
-            #customAlert {
+    #customAlert {
         position: fixed;
         bottom: 0;
         left: 50%;
@@ -59,6 +50,46 @@
         text-decoration: none;
         opacity: 0.7;
     }
+
+         #iconSelectedContainer {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            height: 70px; 
+        
+           
+          
+        }
+        #iconSelectedContainer .iconItem {
+           flex: 0 0 18%; 
+           text-align: center;
+           cursor: pointer;
+         }
+         
+        .iconItem {
+            flex: 0 0 calc(25% - 10px);
+            max-width: calc(25% - 5px);
+            text-align: center;
+            cursor: pointer;
+        }
+         
+         
+
+        .iconItem:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .selected {
+               border: 2px solid #007bff;
+        }
+
+        .custom-btn-size {
+            height: 10%; /* Set your desired height */
+        }
+      
     
     .custom-btn-size {
         font-size: 16px;
@@ -91,3 +122,23 @@
         background-color: #27ae60; 
         border-color: #27ae60; 
     }
+    
+    .delete-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+     
+        .btn {
+            margin-right: 10px;
+        }
+    
+    

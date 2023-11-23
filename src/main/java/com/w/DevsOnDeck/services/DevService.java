@@ -2,6 +2,7 @@ package com.w.DevsOnDeck.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,17 @@ public class DevService {
 	public Developer updateDev(Developer dev) {
 
 		return devRepository.save(dev);
+	}
+	
+	// get developers by skills
+	public List<Developer> getDevelopersBySkills(List<String> requiredSkills) {
+	    List<Developer> allDevelopers = devRepository.findAll();
+
+	    // Filter developers based on matching languages or frameworks
+	    return allDevelopers.stream()
+	        .filter(dev -> dev.getLanguages().stream().anyMatch(requiredSkills::contains)
+	                        || dev.getFrameworks().stream().anyMatch(requiredSkills::contains))
+	        .collect(Collectors.toList());
 	}
 
 }

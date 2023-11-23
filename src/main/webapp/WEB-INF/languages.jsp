@@ -44,14 +44,14 @@
 
                         <div class="row mb-3">
 
-                            <div class="col-md-6">
-                                <h2 class="mt-3 mb-5">Pick Your Top 5 Languages</h2>
+                            <div class="col-md-5">
+                                <h3 class="mt-3 mb-5">Pick Your Top 5 Languages</h3>
                                 <div id="iconContainer" style="background-color: #e9ecef;">
                                     <!-- Icons will be dynamically added here -->
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <div class="mt-3 mb-2" id="iconSelectedContainer"></div>
                                 <h2 class="mt-3 mb-1">Short Bio</h2>
                                 <div>
