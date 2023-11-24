@@ -1,0 +1,44 @@
+package com.w.DevsOnDeck.services;
+
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.w.DevsOnDeck.models.Developer;
+import com.w.DevsOnDeck.models.Message;
+import com.w.DevsOnDeck.models.Organization;
+import com.w.DevsOnDeck.repositories.MessageRepository;
+
+@Service
+public class MessageService {
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+  
+    
+ // send a message
+    public void sendMessage(Organization sender, Developer receiver, String content) {
+        Message message = new Message();
+        message.setSender(sender);
+        message.setReceiver(receiver);
+        message.setContent(content);
+
+        message.setSentAt(new Date());
+
+        messageRepository.save(message);
+    }
+
+
+    public List<Message> getMessagesByReceiver(Developer receiver) {
+        return messageRepository.findByReceiver(receiver);
+    }
+    
+
+}
+
+

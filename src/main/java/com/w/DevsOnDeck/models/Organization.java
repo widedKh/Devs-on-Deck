@@ -67,6 +67,10 @@ public class Organization {
 
 	@OneToMany(mappedBy = "organization", fetch = FetchType.LAZY)
 	private List<Position> positions;
+	
+	 @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
+	  private List<Message> sentMessages;
+
 
 	public Organization() {
 
@@ -177,4 +181,13 @@ public class Organization {
 		this.positions = positions;
 	}
 
+	public List<Message> getSentMessages() {
+	    return sentMessages;
+	}
+
+	public void setSentMessages(List<Message> sentMessages) {
+	    this.sentMessages = sentMessages;
+	}
+        
+	
 }

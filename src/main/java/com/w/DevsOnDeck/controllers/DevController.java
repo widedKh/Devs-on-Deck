@@ -47,7 +47,7 @@ public class DevController {
        devService.register(newDev, result);
        
        if(result.hasErrors()) {
-    	   System.out.println("Hello, world!");
+
            model.addAttribute("newLogin", new LoginDev());
            return "devIndex.jsp";
        }

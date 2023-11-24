@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -71,7 +73,9 @@ public class Developer {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-
+        
+       @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY)
+       private List<Message> receivedMessages;
 	
 
 	public Developer() {
@@ -192,5 +196,14 @@ public class Developer {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
+
+	public List<Message> getReceivedMessages() {
+	    return receivedMessages;
+	}
+
+	public void setReceivedMessages(List<Message> receivedMessages) {
+	    this.receivedMessages = receivedMessages;
+	}
+	
 
 }

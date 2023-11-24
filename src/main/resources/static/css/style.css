@@ -140,5 +140,44 @@
         .btn {
             margin-right: 10px;
         }
+        #notification-container {
+    position: relative;
+    cursor: pointer;
+}
+
+#notification-icon {
+    font-size: 24px;
+}
+
+#notification-dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 300px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+#notification-dropdown.show {
+    display: block;
+}
+
+.notification-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-item.error {
+    color: #ff0000;
+}
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
     
     

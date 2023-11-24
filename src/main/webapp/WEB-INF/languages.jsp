@@ -18,6 +18,8 @@
 
 <jsp:include page="navbar.jsp" />
 <div class="container mt-3">
+
+<a href="/messages/receiver/${developer.id}">View Messages</a>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="d-flex" style="background-color: #6FA8DC; width: 125%;">

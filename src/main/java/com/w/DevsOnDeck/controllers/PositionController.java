@@ -76,7 +76,7 @@ public class PositionController {
     // add a new position
 
     @PostMapping("/orgs/job/new")
-    public String createTeam(@Valid @ModelAttribute("position") Position position, BindingResult result,
+    public String createPosition(@Valid @ModelAttribute("position") Position position, BindingResult result,
 	    HttpSession session) {
 	Long userId = (Long) session.getAttribute("organization_id");
 
