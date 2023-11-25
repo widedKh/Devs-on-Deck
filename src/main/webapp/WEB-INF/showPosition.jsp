@@ -44,14 +44,14 @@
 }
 
 .name-bio h3 {
-	border-bottom: 1px solid #000;
+
 	padding: 3px;
 	width: 150px;
 }
 </style>
 <body style="background-color: #f8f9fa;">
 
-	<!-- Include your navigation bar -->
+
 	<jsp:include page="navbar.jsp" />
 	<div class="container mt-3">
 		<div class="d-flex justify-content-between align-items-center">

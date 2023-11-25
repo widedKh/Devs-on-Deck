@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -22,172 +24,181 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "organizations")
 public class Organization {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@NotEmpty(message = "Organization name is required!")
-	@Size(min = 4, message = "Organization name must have at least 4 characters")
-	private String orgName;
+    @NotEmpty(message = "Organization name is required!")
+    @Size(min = 4, message = "Organization name must have at least 4 characters")
+    private String orgName;
 
-	@NotEmpty(message = "First name is required!")
-	@Size(min = 3, message = "First name must have at least 3 characters")
-	private String firstName;
+    @NotEmpty(message = "First name is required!")
+    @Size(min = 3, message = "First name must have at least 3 characters")
+    private String firstName;
 
-	@NotEmpty(message = "Last name is required!")
-	@Size(min = 3, message = "Last name must have at least 3 characters")
-	private String lastName;
+    @NotEmpty(message = "Last name is required!")
+    @Size(min = 3, message = "Last name must have at least 3 characters")
+    private String lastName;
 
-	@NotEmpty(message = "Email is required!")
-	@Email(message = "Please enter a valid email!")
-	private String email;
+    @NotEmpty(message = "Email is required!")
+    @Email(message = "Please enter a valid email!")
+    private String email;
 
-	@NotEmpty(message = "Address is required!")
-	private String address;
+    @NotEmpty(message = "Address is required!")
+    private String address;
 
-	@NotEmpty(message = "City is required!")
-	private String city;
+    @NotEmpty(message = "City is required!")
+    private String city;
 
-	@NotEmpty(message = "State is required!")
-	private String state;
+    @NotEmpty(message = "State is required!")
+    private String state;
 
-	@NotEmpty(message = "Password is required!")
-	@Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
-	private String password;
+    @NotEmpty(message = "Password is required!")
+    @Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters")
+    private String password;
 
-	@Transient
-	@NotEmpty(message = "Confirm Password is required!")
-	@Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters")
-	private String confirm;
-	@Column(updatable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date createdAt;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date updatedAt;
+    @Transient
+    @NotEmpty(message = "Confirm Password is required!")
+    @Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters")
+    private String confirm;
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
 
-	@OneToMany(mappedBy = "organization", fetch = FetchType.LAZY)
-	private List<Position> positions;
-	
-	 @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
-	  private List<Message> sentMessages;
+    @OneToMany(mappedBy = "organization", fetch = FetchType.LAZY)
+    private List<Position> positions;
 
+    @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
+    private List<Message> sentMessages;
 
-	public Organization() {
+    public Organization() {
 
-	}
+    }
 
-	// getters and setters
-	public Long getId() {
-		return id;
-	}
+    // getters and setters
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @PrePersist
+    protected void onCreate() {
+	this.createdAt = new Date();
+    }
 
-	public String getOrgName() {
-		return orgName;
-	}
+    @PreUpdate
+    protected void onUpdate() {
+	this.updatedAt = new Date();
+    }
 
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
-	}
+    public Long getId() {
+	return id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getOrgName() {
+	return orgName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setOrgName(String orgName) {
+	this.orgName = orgName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getFirstName() {
+	return firstName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setFirstName(String firstName) {
+	this.firstName = firstName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLastName() {
+	return lastName;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setLastName(String lastName) {
+	this.lastName = lastName;
+    }
 
-	public void setAddress(String adress) {
-		this.address = adress;
-	}
+    public String getEmail() {
+	return email;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setEmail(String email) {
+	this.email = email;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getAddress() {
+	return address;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setAddress(String adress) {
+	this.address = adress;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public String getCity() {
+	return city;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setCity(String city) {
+	this.city = city;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getState() {
+	return state;
+    }
 
-	public String getConfirm() {
-		return confirm;
-	}
+    public void setState(String state) {
+	this.state = state;
+    }
 
-	public void setConfirm(String confirm) {
-		this.confirm = confirm;
-	}
+    public String getPassword() {
+	return password;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public void setPassword(String password) {
+	this.password = password;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public String getConfirm() {
+	return confirm;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public void setConfirm(String confirm) {
+	this.confirm = confirm;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public Date getCreatedAt() {
+	return createdAt;
+    }
 
-	public List<Position> getPositions() {
-		return positions;
-	}
+    public void setCreatedAt(Date createdAt) {
+	this.createdAt = createdAt;
+    }
 
-	public void setPositions(List<Position> positions) {
-		this.positions = positions;
-	}
+    public Date getUpdatedAt() {
+	return updatedAt;
+    }
 
-	public List<Message> getSentMessages() {
-	    return sentMessages;
-	}
+    public void setUpdatedAt(Date updatedAt) {
+	this.updatedAt = updatedAt;
+    }
 
-	public void setSentMessages(List<Message> sentMessages) {
-	    this.sentMessages = sentMessages;
-	}
-        
-	
+    public List<Position> getPositions() {
+	return positions;
+    }
+
+    public void setPositions(List<Position> positions) {
+	this.positions = positions;
+    }
+
+    public List<Message> getSentMessages() {
+	return sentMessages;
+    }
+
+    public void setSentMessages(List<Message> sentMessages) {
+	this.sentMessages = sentMessages;
+    }
+
 }

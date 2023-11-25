@@ -118,7 +118,7 @@
 
 							</div>
 							<div class="offset-md-5 mt-2">
-								<a href="/orgs/register">Need to sign up as a Developer?</a>
+								<a href="/devs/register">Need to sign up as a Developer?</a>
 							</div>
 
 						</form:form>
