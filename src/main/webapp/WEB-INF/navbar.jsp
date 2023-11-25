@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-lg " style="background-color: #c87f58;">
 
-    <% if (currentPage.equals("/orgs/dashboard")) { %>
+    <% if (currentPage.equals("/orgs/dashboard") || currentPage.contains("/orgs/job/")) { %>
         <h1 class="text-white">${org.orgName}</h1>
         <h1 class="text-white ml-auto">DevsOnDeck</h1>
         <ul class="navbar-nav ml-auto">
