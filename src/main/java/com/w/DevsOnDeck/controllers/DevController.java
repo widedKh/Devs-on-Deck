@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.w.DevsOnDeck.models.Developer;
 import com.w.DevsOnDeck.models.LoginDev;
-
+import com.w.DevsOnDeck.models.Message;
 import com.w.DevsOnDeck.services.DevService;
+import com.w.DevsOnDeck.services.MessageService;
+import com.w.DevsOnDeck.services.OrgService;
 
 @Controller
 public class DevController {
@@ -25,6 +27,12 @@ public class DevController {
 	// Add once service is implemented:
     @Autowired
     private DevService devService;
+    
+    @Autowired
+    private OrgService orgService;
+    
+    @Autowired
+    private MessageService messageService;
     
     @GetMapping("/")
 	public String index() {
@@ -100,8 +108,19 @@ public class DevController {
 			
 			return "redirect:/";
 		}
-
+		
 		Developer developer = devService.findDev(developerId);
+		
+		List<Message> messages = messageService.getMessagesByReceiverOrderBySender(developer);
+		
+		//List<Organization> orgs = orgService.findAllOrgs();
+		
+		//model.addAttribute("orgs", orgs);
+		
+		long numberOfMessages = messageService.getNumberOfMessagesForReceiver(developer);
+		
+		model.addAttribute("numOfMessages", numberOfMessages);
+		model.addAttribute("messages", messages);
 		model.addAttribute("developer", developer);
 	   
   	 return "languages.jsp";

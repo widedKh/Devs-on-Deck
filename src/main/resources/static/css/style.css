@@ -140,44 +140,53 @@
         .btn {
             margin-right: 10px;
         }
-        #notification-container {
-    position: relative;
-    cursor: pointer;
-}
-
-#notification-icon {
-    font-size: 24px;
-}
-
-#notification-dropdown {
-    display: none;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    width: 300px;
-    max-height: 200px;
+        
+  .message-container {
+    max-height: 300px;
     overflow-y: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
-#notification-dropdown.show {
-    display: block;
-}
-
-.notification-item {
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.message {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #a6c8e0; 
+    border-radius: 5px;
+    background-color: #e2f0fc; 
 }
 
-.notification-item.error {
-    color: #ff0000;
+.message-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1a468b; /* Dark blue text */
 }
-.alert-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border-color: #bee5eb;
+
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff; 
 }
+
+.modal-dialog {
+    max-width: 800px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333; 
+}
+
+.form-control {
+    border-color: #ccc;
+}
+
+.form-control:focus {
+    border-color: rgb(128, 0, 64); 
+    box-shadow: 0 0 0 0.25rem rgba(108, 117, 125, 0.25); 
+}
+
 
     
     
